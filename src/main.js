@@ -1,35 +1,34 @@
-const pokemonsDB = require('./db/pokemonsDB');
-const helpDB = require('./db/helpDB');
+const SVNRepoDB = require('./db/SVNRepoDB');
+//const helpDB = require('./db/helpDB');
 const express= require('express');
-const { createNewPokemon} = require('./services/PokemonService');
+const { createNewRepo} = require('./services/RepoService');
 
 const port = 8000;
 const app = express();
-const app2 = express();
+//const app2 = express();
 app.use(express.json());
-app2.use(express.json());
+//app2.use(express.json());
 
 //Comando para help
-app2.get('/pokemons', (request, response)=>{
+/*app2.get('/pokemons', (request, response)=>{
     response.send(helpDB);
-});
+});*/
 
-app.get('/pokemons', (request, response)=>{
+app.get('/repo', (request, response)=>{
     //console.log(response.send('Hola mundo'));
-    response.send(pokemonsDB);
+    response.send(SVNRepoDB);
 
 });
 
-app.post('/pokemons', (request, response)=>{
+app.post('/repo', (request, response)=>{
     try {
-        createNewPokemon(request.body);
-        response.status(200).send(pokemonsDB);
+        createNewRepo(request.body);
+        response.status(200).send(SVNRepoDB);
 
     } catch(error){
         response.status(400).send(error.message);
     }
 });
-
 
 app.listen(port,()=>{
     console.log('Server ready on port ${port}');
