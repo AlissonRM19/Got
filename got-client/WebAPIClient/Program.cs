@@ -1,6 +1,4 @@
-﻿// See https://aka.ms/new-console-template for more information
-//Console.WriteLine("Hello, World!");
-
+﻿
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -13,6 +11,11 @@ using System.Net;
 
 using System.Text; 
 using System.IO;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 
 namespace got_client
@@ -23,20 +26,13 @@ namespace got_client
 
         HttpClient client = new HttpClient();
 
-
-
         //Funcion Main
         static void Main(string[] args)
         {
-
             Program program = new Program();
-            //await program.PostTodoItems();
+            //program.Comandos();
 
-           program.Comandos();
 
-            //Solo se comenta para una prueba
-            //await program.GetTodoItems();
-            //await program.gotHelp();
         }
 
         //Metodo Get
@@ -46,7 +42,6 @@ namespace got_client
                 "http://localhost:8000/pokemons");
 
             List<Todo>? todo = JsonSerializer.Deserialize<List<Todo>>(response);
-
 
             if (todo == null)
             {
@@ -62,7 +57,7 @@ namespace got_client
                 Console.WriteLine($"type: {item?.type}");
                 Console.WriteLine($"gen: {item?.gen}");
                 Console.WriteLine($" ");
-            }
+                }
             }  
         }
 
@@ -115,7 +110,6 @@ namespace got_client
             Console.WriteLine("Recupera los cambios para un archivo en el server y lo sincroniza con el archivo en el cliente.");
             Console.WriteLine("Si hay cambios locales, debe permitirle de alguna forma, que el usuario haga merge de los cambios interactivamente");
             Console.WriteLine(" ");
-
         }
 
         private void gotadd()
@@ -140,7 +134,6 @@ namespace got_client
 
             //Realizar el commit
             Console.WriteLine("Se realizo el commit "+message);
-             
         }
 
         private void gotstatus()
@@ -234,7 +227,6 @@ namespace got_client
             }
         }
 
-        
 
         /*private async Task PostTodoItems()
             {
@@ -292,11 +284,8 @@ namespace got_client
     {
         public int id { get; set; }
         public string? name {get ; set; }
-
         public string? type { get; set; }
-
         public int gen { get; set; }
 
-    }   
-
+    }
 }
