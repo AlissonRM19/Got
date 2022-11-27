@@ -14,7 +14,6 @@ using System.IO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 
@@ -23,14 +22,14 @@ namespace got_client
     //Clase Program
     class Program 
     {
-
+        //private static readonly HttpClient client = new HttpClient();
         HttpClient client = new HttpClient();
 
         //Funcion Main
         static void Main(string[] args)
         {
             Program program = new Program();
-            //program.Comandos();
+            program.Comandos();
 
 
         }
@@ -38,8 +37,7 @@ namespace got_client
         //Metodo Get
         private async Task GetTodoItems()
         {
-            string response = await client.GetStringAsync(
-                "http://localhost:8000/pokemons");
+            string response = await client.GetStringAsync("http://localhost:8000/repo");
 
             List<Todo>? todo = JsonSerializer.Deserialize<List<Todo>>(response);
 
@@ -52,10 +50,8 @@ namespace got_client
                 foreach (var item in todo)
                 {
 
-                Console.WriteLine($"id: {item.id}");
-                Console.WriteLine($"name: {item?.name}");
-                Console.WriteLine($"type: {item?.type}");
-                Console.WriteLine($"gen: {item?.gen}");
+                //Console.WriteLine($"id: {item.id}");
+                Console.WriteLine($"files: {item?.files}");
                 Console.WriteLine($" ");
                 }
             }  
@@ -69,6 +65,12 @@ namespace got_client
             //crear el repositorio
 
             Console.WriteLine("Se inicio el repositorio "+ reponame);
+        }
+
+        private  void parastatus(){
+
+           Program program = new Program();
+           program.GetTodoItems();
         }
 
         private void gotHelp()
@@ -113,7 +115,8 @@ namespace got_client
         }
 
         private void gotadd()
-        {   string? filename;
+        {
+            string? filename;
             Console.WriteLine("Escriba el nombre del archivo a agregar...");
             filename = Console.ReadLine();
 
@@ -137,18 +140,20 @@ namespace got_client
         }
 
         private void gotstatus()
-        {   string? filename;
+        {
+            string? filename;
             Console.WriteLine("Escriba el nombre del archivo...");
             filename = Console.ReadLine();
 
-            if (filename=="-s"){
-                //Dar status de los archivos del repositorio
-                Console.WriteLine("Dar status de los archivos del repositorio");
+            if (filename == "-s")
+            { 
+               parastatus();
             }
-            else{
+            else
+            {
                 //Dar status del archivo
-                Console.WriteLine("Status del archivo "+filename);
-            }  
+                Console.WriteLine("Status del archivo " + filename);
+            }
         }
 
         private void gotrollback()
@@ -227,34 +232,36 @@ namespace got_client
             }
         }
 
-
+        
         /*private async Task PostTodoItems()
             {
-                
-                /*var values = new Dictionary<string, string>
+                /*
+                //var values = new Dictionary<string, string>
+                var values=
                 {
-                    { "name", "John Doe" },
-                    { "occupation", "gardener" }
+                    {3,"Repo3",{"file5","file6"},"commit 3",3}
                 };
 
                 var data = new FormUrlEncodedContent(values);
 
-                var url = "http://localhost:8000/pokemons";
+                var url = "http://localhost:8000/repo";
                 using var client = new HttpClient();
 
                 var response = await client.PostAsync(url, data);
 
                 string result = response.Content.ReadAsStringAsync().Result;
-                Console.WriteLine(result);*/
+                Console.WriteLine(result);
 
-                /*string url = "http://localhost:8000/pokemons";
+                string url = "http://localhost:8000/repo";
                 var request = (HttpWebRequest)WebRequest.Create(url);
 
                 var 
                     postData = "&id=" + Uri.EscapeDataString("id");
                     postData += "name=" + Uri.EscapeDataString("name");
-                    postData = "type=" + Uri.EscapeDataString("type");
-                    postData += "&gen=" + Uri.EscapeDataString("gen");
+                    postData += "files=" +Uri.EscapeDataString("files");
+                    postData += "lastcommit=" +Uri.EscapeDataString("lastcommit");
+                    postData += "&Numcommit=" +Uri.EscapeDataString("Numcommit");
+            
                 var data = Encoding.ASCII.GetBytes(postData);
 
                 request.Method = "POST";
@@ -266,17 +273,31 @@ namespace got_client
                     stream.Write(data, 0, data.Length);
                 }
 
-                var response = (HttpWebResponse)request.GetResponse();*/
+                var response = (HttpWebResponse)request.GetResponse();
 
 
-                /*var wb = new WebClient();
+                var wb = new WebClient();
                 var data = new NameValueCollection();
-                string url = "http://localhost:8000/pokemons";
+                string url = "http://localhost:8000/repo";
                 data["username"] = "myUser";
                 data["password"] = "myPassword";
 
                 var response = wb.UploadValues(url, "POST", data);
-              }*/
+                */
+
+                
+                  //var values = new Dictionary<string, string>
+                    
+                    //List<String> files = new {"file5","file6"};
+                  
+                   /* var values = {"3","Repo3","file1","commit 3","3"};
+
+                    var content = new FormUrlEncodedContent(values);
+
+                    var response = await client.PostAsync("http://localhost:8000/repo", content);
+
+                    var responseString = await response.Content.ReadAsStringAsync();
+                }*/
 
     }    
 
@@ -284,8 +305,11 @@ namespace got_client
     {
         public int id { get; set; }
         public string? name {get ; set; }
-        public string? type { get; set; }
-        public int gen { get; set; }
+        //public List<string> files { get; set; }
+        public string? files {get ; set; }
+        public string? lastcommit {get; set;}
+        public int Numcommit { get; set; }
 
     }
+    //respuesta = new Todo(id=3, );
 }

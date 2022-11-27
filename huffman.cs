@@ -319,7 +319,7 @@ namespace Huffman_Encoding
         
         private const string Example = "Is education residence conveying so so.";
 
-        private static void Main()
+        private static void principal()
         {
             var huffman = new Huffman<char>(Example);
             List<int> encoding = huffman.Encode(Example);

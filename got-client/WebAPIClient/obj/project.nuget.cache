@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "sCoi3vlUw78Y2GEDXZ1W4eAYtGgvkR+BkEwJrTW6eJFoOXnogRa+aDBAwimVXhNHj7E7ARkpH+bxO4ccSeazMw==",
+  "dgSpecHash": "TFnK9GU/pHppAKLFbGD6rIguVs7AxdGlv/DDItJx55JZZ0QRg/farE/X4J7MnVRfElysM2b1uunD2bLWWsMHRQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Greva\\Got\\got-client\\WebAPIClient\\WebAPIClient.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\HP\\CLionProjects\\Got\\got-client\\WebAPIClient\\WebAPIClient.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\HP\\.nuget\\packages\\newtonsoft.json\\13.0.2\\newtonsoft.json.13.0.2.nupkg.sha512"
+  ],
   "logs": []
 }

@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Greva\\Got\\got-client\\WebAPIClient\\WebAPIClient.csproj": {}
+    "C:\\Users\\HP\\CLionProjects\\Got\\got-client\\WebAPIClient\\WebAPIClient.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Greva\\Got\\got-client\\WebAPIClient\\WebAPIClient.csproj": {
+    "C:\\Users\\HP\\CLionProjects\\Got\\got-client\\WebAPIClient\\WebAPIClient.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Greva\\Got\\got-client\\WebAPIClient\\WebAPIClient.csproj",
+        "projectUniqueName": "C:\\Users\\HP\\CLionProjects\\Got\\got-client\\WebAPIClient\\WebAPIClient.csproj",
         "projectName": "WebAPIClient",
-        "projectPath": "C:\\Users\\Greva\\Got\\got-client\\WebAPIClient\\WebAPIClient.csproj",
-        "packagesPath": "C:\\Users\\Greva\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Greva\\Got\\got-client\\WebAPIClient\\obj\\",
+        "projectPath": "C:\\Users\\HP\\CLionProjects\\Got\\got-client\\WebAPIClient\\WebAPIClient.csproj",
+        "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\HP\\CLionProjects\\Got\\got-client\\WebAPIClient\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Greva\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
@@ -37,6 +37,12 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
+          "dependencies": {
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.2, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
