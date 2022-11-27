@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\HP\\got-client\\WebAPIClient\\WebAPIClient.csproj": {}
+    "C:\\Users\\Greva\\Got\\got-client\\WebAPIClient\\WebAPIClient.csproj": {}
   },
   "projects": {
-    "C:\\Users\\HP\\got-client\\WebAPIClient\\WebAPIClient.csproj": {
+    "C:\\Users\\Greva\\Got\\got-client\\WebAPIClient\\WebAPIClient.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\HP\\got-client\\WebAPIClient\\WebAPIClient.csproj",
+        "projectUniqueName": "C:\\Users\\Greva\\Got\\got-client\\WebAPIClient\\WebAPIClient.csproj",
         "projectName": "WebAPIClient",
-        "projectPath": "C:\\Users\\HP\\got-client\\WebAPIClient\\WebAPIClient.csproj",
-        "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\HP\\got-client\\WebAPIClient\\obj\\",
+        "projectPath": "C:\\Users\\Greva\\Got\\got-client\\WebAPIClient\\WebAPIClient.csproj",
+        "packagesPath": "C:\\Users\\Greva\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Greva\\Got\\got-client\\WebAPIClient\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Greva\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"

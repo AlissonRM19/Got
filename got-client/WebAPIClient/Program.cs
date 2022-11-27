@@ -32,18 +32,12 @@ namespace got_client
             Program program = new Program();
             //await program.PostTodoItems();
 
-            program.Comandos();
+           program.Comandos();
 
             //Solo se comenta para una prueba
             //await program.GetTodoItems();
             //await program.gotHelp();
         }
-
-        //Got init
-        //>got-init
-        //Console.log("Repositorio iniciado")
-
-
 
         //Metodo Get
         private async Task GetTodoItems()
@@ -70,6 +64,16 @@ namespace got_client
                 Console.WriteLine($" ");
             }
             }  
+        }
+
+        private void gotinit()
+        {   string? reponame;
+            Console.WriteLine("Escriba el nombre del repositorio...");
+            reponame = Console.ReadLine();
+
+            //crear el repositorio
+
+            Console.WriteLine("Se inicio el repositorio "+ reponame);
         }
 
         private void gotHelp()
@@ -114,6 +118,76 @@ namespace got_client
 
         }
 
+        private void gotadd()
+        {   string? filename;
+            Console.WriteLine("Escriba el nombre del archivo a agregar...");
+            filename = Console.ReadLine();
+
+            if (filename=="-A"){
+                //agregar los archivos al repositorio
+                Console.WriteLine("Se agregaron todos los archivos al repositorio.(Estan pendientes de commit)");
+            }
+            else{
+                //agregar el archivo al repositorio
+                Console.WriteLine(filename+" Se agrego al repositorio.");
+            } 
+        }
+
+        private void gotcommit()
+        {   string? message;
+            Console.WriteLine("Escriba la descripcion del commit...");
+            message = Console.ReadLine();
+
+            //Realizar el commit
+            Console.WriteLine("Se realizo el commit "+message);
+             
+        }
+
+        private void gotstatus()
+        {   string? filename;
+            Console.WriteLine("Escriba el nombre del archivo...");
+            filename = Console.ReadLine();
+
+            if (filename=="-s"){
+                //Dar status de los archivos del repositorio
+                Console.WriteLine("Dar status de los archivos del repositorio");
+            }
+            else{
+                //Dar status del archivo
+                Console.WriteLine("Status del archivo "+filename);
+            }  
+        }
+
+        private void gotrollback()
+        {   string? filename;
+            Console.WriteLine("Escriba el nombre del archivo...");
+            filename = Console.ReadLine();
+
+            string? commit;
+            Console.WriteLine("Escriba la descripcion del commit...");
+            commit = Console.ReadLine();
+
+            //Realizar el rollback
+            Console.WriteLine("Se regreso "+filename+" a la version del commit "+commit);
+        }
+
+        private void gotreset()
+        {   string? filename;
+            Console.WriteLine("Escriba el nombre del archivo...");
+            filename = Console.ReadLine();
+
+            //Realizar el rollback al commit anterior
+            Console.WriteLine("Se regreso "+filename+" a la version anterior.");
+        }
+
+        private void gotsync()
+        {   string? filename;
+            Console.WriteLine("Escriba el nombre del archivo...");
+            filename = Console.ReadLine();
+
+            //Sincronizar el archivo
+            Console.WriteLine("Se sincronizo "+filename);
+        }
 
         //Comandos para el manejo de Got
         private void Comandos()
@@ -127,8 +201,7 @@ namespace got_client
             switch (comando)
             {
                 case "got init":
-                    Console.WriteLine("El comando digitado es para la funcion: "+ comando);
-                    //En la funcion se debe agregar otro input para el nombre del repositorio
+                    gotinit();
                     break;
 
                 case "got help":
@@ -136,33 +209,27 @@ namespace got_client
                     break;
 
                 case "got add":
-                    Console.WriteLine("El comando digitado es para la funcion: "+ comando);
-                    //En la funcion se debe agregar un espacio para el [-A][name]
+                    gotadd();
                     break;
 
                 case "got commit":
-                    Console.WriteLine("El comando digitado es para la funcion: "+ comando);
-                    //En la funcion se agrega otro input para el mensaje del commit
+                    gotcommit();
                     break;
 
                 case "got status":
-                    Console.WriteLine("El comando digitado es para la funcion: "+ comando);
-                    //Se agrega otro espacio para especificar el file
+                    gotstatus();
                     break;
 
                 case "got rollback":
-                    Console.WriteLine("El comando digitado es para la funcion: "+ comando);
-                    //Se debe agregar un nuevo espacio para el file y el commit
+                    gotrollback();
                     break;
 
                 case "got reset":
-                    Console.WriteLine("El comando digitado es para la funcion: "+ comando);
-                    //Se debe agregar un espacio para el file
+                    gotreset();
                     break;
 
                 case "got sync":
-                    Console.WriteLine("El comando digitado es para la funcion: "+ comando);
-                    //Se debe agregar un espacio para el file
+                    gotsync();
                     break;
             }
         }
