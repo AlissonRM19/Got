@@ -1,4 +1,43 @@
-const SVNRepoDB = require('./db/SVNRepoDB');
+const dbcategoria =require('./dbcategoria');
+
+//Requerido en todos 
+var express = require('express');
+var bodyParser = require('body-parser');
+var cors = require('cors');
+const { request, response } = require('express');
+
+var app = express();
+var router = express.Router();
+
+
+//Para cuando se envia un POST
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
+app.use(cors());
+app.use('/api',router);//Ruta principal
+
+//Ruta para todas las categorias
+router.route('/categoria').get((request, response)=>{
+    dbcategoria.getCategoria().then(result=>{
+        response.json(result[0]);
+    })
+})
+
+//Ruta para una categoria por id
+router.route('/categoria/:id').get((request, response)=>{
+    dbcategoria.getCategoria_x_id(request.params.id).then(result=>{
+        response.json(result[0]);
+    })
+})
+
+var port = process.env.PORT || 8090;
+app.listen(port);
+console.log("Categoria API Iniciado en el puerto : "+ port); //Mensaje de inicio de servicio
+
+
+
+
+/*const SVNRepoDB = require('./db/SVNRepoDB');
 //const helpDB = require('./db/helpDB');
 const express= require('express');
 const { createNewRepo} = require('./services/RepoService');
@@ -14,7 +53,7 @@ app.use(express.json());
     response.send(helpDB);
 });*/
 
-app.get('/repo', (request, response)=>{
+/*app.get('/repo', (request, response)=>{
     //console.log(response.send('Hola mundo'));
     response.send(SVNRepoDB);
 
@@ -32,4 +71,4 @@ app.post('/repo', (request, response)=>{
 
 app.listen(port,()=>{
     console.log('Server ready on port ${port}');
-});
+});*/
