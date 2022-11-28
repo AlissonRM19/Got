@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Net.Http;
@@ -22,14 +21,14 @@ namespace got_client
     //Clase Program
     class Program 
     {
-        //private static readonly HttpClient client = new HttpClient();
         HttpClient client = new HttpClient();
 
         //Funcion Main
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
             Program program = new Program();
             program.Comandos();
+            //await program.GetTodoItems();
 
 
         }
@@ -50,8 +49,11 @@ namespace got_client
                 foreach (var item in todo)
                 {
 
-                //Console.WriteLine($"id: {item.id}");
+                Console.WriteLine($"id: {item.id}");
+                Console.WriteLine($"name: {item.name}");
                 Console.WriteLine($"files: {item?.files}");
+                Console.WriteLine($"lastcommit: {item?.lastcommit}");
+                Console.WriteLine($"Numcommit: {item?.Numcommit}");
                 Console.WriteLine($" ");
                 }
             }  
@@ -67,12 +69,8 @@ namespace got_client
             Console.WriteLine("Se inicio el repositorio "+ reponame);
         }
 
-        private  void parastatus(){
-
-           Program program = new Program();
-           program.GetTodoItems();
-        }
-
+        
+        //Funcion para got help
         private void gotHelp()
         {
             Console.WriteLine("Comando: got init <name>");
@@ -114,6 +112,8 @@ namespace got_client
             Console.WriteLine(" ");
         }
 
+        //Funciones de comandos de got
+
         private void gotadd()
         {
             string? filename;
@@ -141,13 +141,33 @@ namespace got_client
 
         private void gotstatus()
         {
+            
             string? filename;
             Console.WriteLine("Escriba el nombre del archivo...");
             filename = Console.ReadLine();
 
             if (filename == "-s")
-            { 
-               parastatus();
+            {   
+                /*string response = await client.GetStringAsync("http://localhost:8000/repo");
+
+                List<Todo>? todo = JsonSerializer.Deserialize<List<Todo>>(response);
+
+                if (todo == null)
+                {
+                    Console.WriteLine("Existe un atributo nulo");
+                }
+                else
+                {
+                    foreach (var item in todo)
+                    {
+
+                    //Console.WriteLine($"id: {item.id}");
+                    //Console.WriteLine($"files: {item?.files}");
+                    Console.WriteLine($" ");
+                    }
+                }*/
+              // parastatus();
+                Console.WriteLine("Status de todos los archivos");
             }
             else
             {
@@ -191,7 +211,7 @@ namespace got_client
         private void Comandos()
         {
             string? comando;
-            
+
             Console.WriteLine("Escriba el comando got");
             comando = Console.ReadLine();
 
@@ -232,7 +252,7 @@ namespace got_client
             }
         }
 
-        
+        //Prueba de POST
         /*private async Task PostTodoItems()
             {
                 /*
@@ -285,31 +305,32 @@ namespace got_client
                 var response = wb.UploadValues(url, "POST", data);
                 */
 
-                
-                  //var values = new Dictionary<string, string>
-                    
-                    //List<String> files = new {"file5","file6"};
-                  
-                   /* var values = {"3","Repo3","file1","commit 3","3"};
 
-                    var content = new FormUrlEncodedContent(values);
+        //var values = new Dictionary<string, string>
 
-                    var response = await client.PostAsync("http://localhost:8000/repo", content);
+        //List<String> files = new {"file5","file6"};
 
-                    var responseString = await response.Content.ReadAsStringAsync();
-                }*/
+        /* var values = {"3","Repo3","file1","commit 3","3"};
+
+         var content = new FormUrlEncodedContent(values);
+
+         var response = await client.PostAsync("http://localhost:8000/repo", content);
+
+         var responseString = await response.Content.ReadAsStringAsync();
+     }*/
 
     }    
 
+
+    //Elementos de la base de datos
     class Todo
     {
         public int id { get; set; }
         public string? name {get ; set; }
-        //public List<string> files { get; set; }
-        public string? files {get ; set; }
+        public List<string>? files { get; set; }
+    
         public string? lastcommit {get; set;}
         public int Numcommit { get; set; }
 
     }
-    //respuesta = new Todo(id=3, );
 }
