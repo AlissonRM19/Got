@@ -1,4 +1,4 @@
-const dbcategoria =require('./dbcategoria');
+/*const dbcategoria =require('./dbcategoria');
 
 //Requerido en todos 
 var express = require('express');
@@ -33,28 +33,24 @@ router.route('/categoria/:id').get((request, response)=>{
 var port = process.env.PORT || 8090;
 app.listen(port);
 console.log("Categoria API Iniciado en el puerto : "+ port); //Mensaje de inicio de servicio
+*/
 
 
-
-
-/*const SVNRepoDB = require('./db/SVNRepoDB');
-//const helpDB = require('./db/helpDB');
+/*
+    Contiene los GET y POST para obtener o escribir informacion en una base de datos la cual es SVNRepoDB.
+    En este archivo se inicializa el servidor el cual escuchara por el puerto 8000.
+*/
+const SVNRepoDB = require('./db/SVNRepoDB');
 const express= require('express');
 const { createNewRepo} = require('./services/RepoService');
 
 const port = 8000;
 const app = express();
-//const app2 = express();
 app.use(express.json());
-//app2.use(express.json());
 
-//Comando para help
-/*app2.get('/pokemons', (request, response)=>{
-    response.send(helpDB);
-});*/
 
-/*app.get('/repo', (request, response)=>{
-    //console.log(response.send('Hola mundo'));
+
+app.get('/repo', (request, response)=>{
     response.send(SVNRepoDB);
 
 });
@@ -70,5 +66,5 @@ app.post('/repo', (request, response)=>{
 });
 
 app.listen(port,()=>{
-    console.log('Server ready on port ${port}');
-});*/
+    console.log('Server ready on port '+ port);
+});
